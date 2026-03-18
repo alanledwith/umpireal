@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umpireal | Publication 01 — The Three Pressures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050d1a;
+    --card: #0a1828;
+    --card2: #071222;
+    --gold: #f0b429;
+    --gold-dim: #c9901a;
+    --cyan: #22d3ee;
+    --white: #f1f5f9;
+    --muted: #64748b;
+    --border: #1a3050;
+    --red: #ef4444;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    width: 794px;
+    margin: 0 auto;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    width: 794px;
+    min-height: 1123px;
+    background: linear-gradient(165deg, #050d1a 0%, #071525 40%, #0a1e35 80%, #050d1a 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(240,180,41,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 100px;
+    left: -80px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(34,211,238,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 48px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
+  }
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-hex {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .brand-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+  .brand-name span { color: var(--gold); }
+  .pub-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    border: 1px solid rgba(34,211,238,0.3);
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 48px;
+    position: relative;
+    z-index: 2;
+  }
+  .series-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cover-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 180px;
+    font-weight: 900;
+    line-height: 0.85;
+    color: rgba(240,180,41,0.06);
+    position: absolute;
+    right: -10px;
+    top: 40px;
+    letter-spacing: -5px;
+    pointer-events: none;
+    user-select: none;
+  }
+  .cover-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 32px;
+    max-width: 580px;
+  }
+  .cover-headline .accent { color: var(--gold); }
+  .cover-headline .accent2 { color: var(--cyan); }
+  .cover-rule {
+    width: 80px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 32px;
+  }
+  .cover-standfirst {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #bcccd8;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  .cover-footer {
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-footer-brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .cover-footer-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+  /* ── CONTENT PAGES ── */
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: var(--bg);
+    position: relative;
+    padding: 48px;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-series {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .page-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--white);
+  }
+  .page-brand span { color: var(--gold); }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+  }
+  .section-title .g { color: var(--gold); }
+  .section-title .c { color: var(--cyan); }
+  .body-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #ccd8e4;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  .body-text strong { color: var(--white); font-weight: 500; }
+  .body-text em { color: var(--gold); font-style: normal; }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 24px;
+    border-radius: 2px;
+  }
+  .card.cyan { border-top-color: var(--cyan); }
+  .card.red { border-top-color: var(--red); }
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .card.cyan .card-title { color: var(--cyan); }
+  .card.red .card-title { color: var(--red); }
+  .card-body {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #b0c4d0;
+    font-weight: 300;
+  }
+
+  /* ── STAT BLOCKS ── */
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .stat-box {
+    flex: 1;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    background: var(--card2);
+    border-left: 4px solid var(--gold);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .pull-quote p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--white);
+    font-style: italic;
+  }
+  .pull-quote .g { color: var(--gold); }
+
+  /* ── VISUAL SEPARATOR ── */
+  .sep {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px 0;
+  }
+  .sep.cyan { background: var(--cyan); }
+  .sep.full { width: 100%; height: 1px; background: var(--border); }
+
+  /* ── CONNECTOR DIAGRAM ── */
+  .connector {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    margin: 24px 0;
+    position: relative;
+    border-radius: 2px;
+  }
+  .connector-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .connector-node {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--gold);
+    padding: 16px 12px;
+    text-align: center;
+    border-radius: 2px;
+  }
+  .connector-node.cyan { border-color: var(--cyan); }
+  .connector-node-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .connector-node.cyan .connector-node-title { color: var(--cyan); }
+  .connector-node-body {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .connector-arrow {
+    font-size: 20px;
+    color: var(--border);
+    flex-shrink: 0;
+  }
+  .connector-center {
+    width: 80px;
+    height: 80px;
+    background: rgba(240,180,41,0.1);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-direction: column;
+    text-align: center;
+    padding: 8px;
+  }
+  .connector-center-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+
+  /* ── PAGE FOOTER ── */
+  .page-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-footer-series {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .page-footer-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(34,211,238,0.04));
+    border: 1px solid rgba(240,180,41,0.25);
+    padding: 28px;
+    margin: 24px 0;
+    border-radius: 2px;
+  }
+  .highlight-box p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--white);
+  }
+  .highlight-box p .g { color: var(--gold); }
+
+  @media print {
+    body { margin: 0; }
+    .cover, .page { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-header">
+    <div class="brand-mark">
+      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAEdAR0DASIAAhEBAxEB/8QAHQABAAEFAQEBAAAAAAAAAAAAAAQDBQYHCAIBCf/EAFQQAAEDAwEEBwMGCAsGAwkAAAEAAgMEBREGBxIhMQgTQVFhcYEUIpEVIzJigqEWQlJjcpKxshgkM0NzdKKzwdHSJTZEg5OjJlPwNVRWlLTCw9Ph/8QAHAEBAAIDAQEBAAAAAAAAAAAAAAQFAQMGAgcI/8QAQREAAQMCAwQGCAMGBQUAAAAAAQACAwQRBSExBhJBURNhcYGRoRQiMkKxwdHwFTNSByNisuHxFiQlQ4JTcqLC4v/aAAwDAQACEQMRAD8A4yRERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERfWNc9waxpc48gBklZpoXZjq7WE+5abVPIwHD5MANZ+k4kNHkTnwXmR7I2GSQgNGpJsB2k5IMzYZlYUqsFPPOcQwySH6rSV1XobouU0PV1Gqrs0ngTBSDeP67hgejT5ralHoPZXo2ATVFutMRYMmW4yiU8BnIDyQD5ALlKzbbC6d25ETK7+EZeJt5AqfHhlQ8XIDR1/T+y4dsuidT3k4ttnq6o5xiGJ0h+DQVmdn2BbR7iW4sVRADzM27Fj9dzT9y6ku+23Z5ZpGUdLVyVjWjA9igzGwefAfBY5N0kLA2Z7YtPXF8YdhrzKwFw78dig/4kxuoF6WgsP4if/hbfQaZmUk3h9laep+jHruQN6wUkRJ471S3h8Mqb/Bb1j/77bf8A5k/6FtL+EhZP/hu4f9Ziyqn2u2ufZvU61ZaqvqaepFO+mL27+8SACDyxxUCpx7amDdMlO1ocQBlxOg9orayjoXXs8n77FzvUdGPXcYd1fscuDw3alvveWcfesfu+wHaPb94mxzzNHIw7kuf1HOP3Lf38JCyY/wB27h/1mJ/CQsmP927hnu65imR4vtU0+vRtI8P/AH+S1upqA6Sn77lydetEaos3/tKz1dKc4xNC6M/2wFYZ6eeA4mhkj/SaQu7bdt12f3PNPWvq6NjgA72mm3mHPYcZ+9T6jReyXWsJmpaKzzmQZ6yglETuPaQwjPqCtw2zfTG2IUj4+sZjzt8SvP4Zv/kyB3l9fgvz+Rdaa56LlFUdZUaWuwY7mIKsbp9HtGPi31Wg9d7LdX6Om3bra5mRk4ZJgFj/ACcMtPlnPgukw7G8PxLKllDjy0d4HM91woU1PLB+Y23Xw8Vg6L09rmOLXtLXDmCMELyrRaURERERERERERERERERERERERERERERERERF7hikmlbFEwve7kAgF0XhZXoLQOo9ZXNlFaLfNMTguIGA0d7ieDR4n0ytq7DNgNw1EYL3qMSUNqOHs4YkmH1AeQ+uRjuB5jo++X7Q+yjTrKVsdPRMDcw0dOAZp3d57Ty4ud8VyeM7VxUcvotI3pZzlYaA9dtT1DTiQp1NQOlb0kh3Wc+J7PqsH2ZdHbTVghjq9SEXStABdC0lsDT4ng5/rgeCyfWO1bRGh4TaaPq6mpp2YZRUDGhjO5pI91vlz8FoLaBtg1bqsyU7an5Lt7uApqVxaSPrP5u+4LXnEklxySVXRbLV2KvE+MzE8mDID5DuHet5roacbtM3vOq2rq/bvrK9MdDbnQ2WAnP8W96Qj9M/wCAC1hWVVVXTunrKiaolcS4vleXuJPM5Kor7hdjQ4TR0Dd2njDe7Px1VdLUSSm7zdfML6AvuF9wrFaV5AW2LNUU56NN7phPGZm3WMmPeG8MlnYtV7q+hvAgcicnxVdiNB6a1jb23XNd4G9luhl6Mk8wR4rxur7jwVQNTcVitSp4wvUE01PKJYJXxSDiHMcWkeoX0hfCF5c0OFiEBIWwNH7Y9badIjdcPlSlGB1Nbl+AOwOHvD71ujSG2rRuqonWvUFMy2STDcdFWYkp5c9m9jHo4BcrbqYXMYlshhtdd4buP5tyz7NFNhxCeLK9xyK6V2jdHzSmpqV9dpmSO21L270bA7fp3+RGSz0yPqrlbaBs81Loy5OpLtb5o+ZY7GQ9ve0jg4eI9cLYegdoup9GVEfydWvmogffop3F0Th3Dtb5hdG6W1rofalZvkm5U9P7TKMSW+rxvZx9KM9vgRgjwVMa7GNniBWDp4P1D2m9v9b9oUjoaar/ACvUfy4H76vBcAIuh9ufR/rrH1980uJK22jL5GYzLAPrAfSb9Yeo7Vz5UQywSuimYWPbzBXZUNfT18Inpn7zT5HkRwP2MlXSRviduPFiqaIilrwiIiIiIiIiIiIiIiIiIiIiIqlPDJPM2KJpc9xwAEAvkEXqjppquobBAwve77l1n0edhENuig1Jq+l353YfT0MrfUOkH3hnx7lU6MOxuO1U1Pq/UdODUvAkoqeRv0e6VwP9kevPGKu3/bAQajSek6og8Y62uidy744z397vQLhsYxmpxCpOFYUc9Hv5cwD8TqTkOas6amZEz0io04Dn2q/7ats1PpqSbT+merqbqG7stRzjpT3Y/Gf4ch29y5lu1xr7tcJa+51c1XVSuLpJZXZcT/67FFOXOLnEkk5JK+4XQ4Hs/S4RFuxi7jq46n6DqUWqq5Kl1zpyQBfRxQBegFeqIvi+gL0AvTWoi+AL0Gr01qqBiIqW7legFVDPBfdwrCKmG9i+4VTdX0NS6KiWL4WlV9xOrS6KPuoWqQY183Euij7uQvUbpIpWyxPcyRhy17XEEHvBHJVCxfCxYIDhY6LK3/sZ20CbqbBrKeNhawMguLzgPP5MvYD9bt7VD6QewymvlNLqbR9O0VJBkmpIRwk7d+IDt7S0c+zjwOii3wW6dhO1d1mdDprUk5dbXENpal5yac9jXfU/Z5LgsSwWowic4lhP/OPgRxsPlw1CtYallSzoajuPEff91ylXUk9FUup6hhY9p7e1UF2H0mdj0F/oZtXaagb7W1plq4YhnrRjJlYBzP5QHPnz58gVMMlPM6GVpa9pwQuownFafFaYVEHYRxaeR+R4jvCgTwPgfuP/ALqmiIrJakREREREREREREREREXRfRT2UfLVeNU32mzbqV/zcb28J5BxDcdrRwJ7zgd61Vsa0VWa21pR2unaRGX5kkxkRtHFzj5D4kgdq7X1/fbXsw2bhtujjhdDF7NbYCM70mOBPf2uJ7fVcjtVjEtMxlBSfnzZD+Fpyv2nQchc8lPoKZshMsnsN8ysN6R2075DpJNJWORpuFVFirnY7jTRnhujHJ5HwC5hAA5DgpFxrKm43Cor62Z09TUSGSWR3NzieJKohW+AYJFhFKImZuObjzP05LRV1TqmTeOnBAMr0AgXoBXiir4AvYC+gL21qIvLW+CqtZ4L0xirMYsXRU2xqoGcOSqNYqrWLCKkI+HJferHcpIYvojKXWVF6sdy+9X4KV1fevoi8Fi6WUXc8F9DPBSuq8E6tLpZQyzivJYpjo14MZS6WUXcXksUos8F5LEullFLFTc3ipjmcFRc3is5LC3Z0dtpLqaePSF/qnuhlcG26Z/Hccf5onuPZ3cu5Yh0r9lAtlW7VtipsUNQ/wCfjYOEMh7PBruY7jkdoWv/AHmPD2OLXA8CDgg+a6e2K6pptoGh6rTmowyrq6ePqKkSHjURHk/zHIkdoBXA4tTv2frfxWlF4nZSNHXxHX8+olW0DhWRdA8+sPZK4PPA4KLPdt+hqrQ+tau3yNc6Au34ZCP5Rhzuu9eR8QVgS7iKVkzGyRm7XAEHmDoqwggkHUIiIvawiIiIiIiIi9wxumlZEwZc8gBeFsno8aLOs9oFJRytJpIj1tSR2RtwXfHIb5uC1zTRwRumlNmtBJ7BmshpcQ1upXT/AEY9EU2j9AMvVYxsdZcYhM57xjq4Bxb5Z+mfMdy0Zto1xNrfV0tTG4i20pMNFH9QHi/zcePlhb36S+q26c0Myw0DhFV3QGFoZw6uBuN8ju4YaPNcoDiuI2Tpn4jUy41Uj1nEhvUNMuwZDsKtK94gjbTM0Gvb95r6F6XwL0AvoCqF9aFUaF5aFWYERfWtVWKNz5RFGx0kh5MY0ucfQcVetDW63XO/No7mJXROic6JjJCwPe3iWkjjyzyxyW37XaqChb1NupIaaPt6pgBPmeZ9VQ4pjjKJ3RhtypEUBkF1qek0jfpqGarNG2BkUZkDJn+/JgZwGjJzjvwrVGA5ocOThkLfsEIa/Jb28OC01qG2G1X+soA33GSb8X9G73m/DOPRRsExl9dK6OSwPBepoAwAhWxrF7cNyJz8Z3QTjvwFVaw5HBVJ2fxSbh+I79i6J5s0kKMBmsqh2fXGRrC260GHNDv5F/DIz3qQ3Ztdi7hdbePOGT/NbMpqYCngJbkCJvH7IUjdDQcgHuXzKXaWua4gO8grUU0ZzWrRs3ufAfK9vJJx/Iyf5rE5KZ8U80Em4XwyvicW8iWuIyM+S34yNwk394EZHu4Wla+PeudcQP8AjJv7xy6DZzFqmuke2Y3sFHqYWxgWVt6nwXx0J7lcGxJ7JLUSx0sA+eqJGwx+BccZ9OfourfIGNLjwUMC+S+0ul73WWiO6UlNHPBLvFsbZMS7oJGcHgc44YKs9RC+GYwVEctPL/5crCx3wP8Agt7w0bKSngpqchkUEQjYPADA+OF5q6ajraQwV1LBURnPuysDgD5HkuHg2skEhD23bdWDqMWyWhXRccYVMsIWY68slstNdSRW4SxPma+SWEvLmNZybgHiMnPb2LGZI8di7Kjqm1UIlYLA81Ce3cNioLmqk9qmuYqMjFKWsqE5qu+htQ1mldT0d6pHO+ZeBKxv85GfpMPmPvAVue1Uy3gtU8EdRE6KQXa4WKy1xY4ObqF0b0gNMW7aLsrj1Hamiaemp/aoHtHvPhIy9vmPpY72kdq4eqInwTvhkGHMJBXZ/Rf1UJaar0fWvBMYM9GHdrD9NnoTn1K576SGi/wO2hVcEEe7RznrqbHLq3ZLR6Yc37K4/ZaV9FNNg8xzj9ZnW06juJv3nkrGvaJGtqW+9ke37+S1giIuzVciIiIiIiIi7M6GelPkvR1XqGoi3Zq5/UxEjjuN4uI83HH2Fx9aIPaLnTxYyC8EjwHFfoHUOGz/AGJ4a1rJrbagMEgZnLePxe4lcbtxVPZQMpI/amcG9wsT57qscLjBmMh0aL/fmubtv2pjqbaNXOike6joT7JTg8vd+kR5uz8AsBAX173SSOke7ec4kk95PagXV4fRsoqZlOzRoAUGaQyvLzxX0DivbQvgCqMCmLUvrQq0bfBeWBV4mrF0Um3VD7fW09fGMvppWygd4HMeoyPVb/oOqmbHUQuBjkaHsdngWkZH3FaBibxW29lNb7ZpsUkjh1lBJ1PPiWH3mfdkei5HaumvE2cDTI9imUjsy1ZnHC1zs8c8gVgG1y17stBdWN76aYjx95hPrvD1WxIWOawF2SAcc+1QtSWo3qy1lCR78sRMRxykbxafiAuOw2u9Gq2S9efYVNkj3mELScUI7lVqYf4nPgfzbv2KtStL42uLS0kcQRyPaPQqvUxn2Gf+id+xfWHOBYSFUgZ2W96SJjqWnDt4nqWZx+iF4qosDHME8fFS7fSvNFCQHFvVMPj9EZVSSmMuOBwPDK+HzStLyr5rCAFEpqRhe1r872QR4LS9bT5uNcRjHtk/Z+dcugqGi35cEcsevktH1cOLlXjB4V1QP+65ddsXIHTygcgolc0hoVpbTlZJs5tJrNQy1hb83b4d4H86/IaPMN3j6hQBCACXcAOJPgtm7OrO+k0lBLJGWzXB5q5ARxAPBg9GBvxV/tTXiloS2+bslHoot+S/Je5KRrWNLgQx2eHd4+CoyUzN3DcEjhhXuenMbmxkYweZ4Y8FjWvKh9p0/Vzx5bPKOpg/Tf7o+HE+i+b0YM72xt1NlaSjdBK1PqGo+U73W1rTmMv6qH+jZ7o+JyfVWiaLGVd+oaxjY2D3WtDW+QUWeLjyX2inhEETYxwCoXkucSVaHMVCRiuj4sZ4KNLEt68q2PbxVFzVOlZhUHtWUU3Rt3dp7VltvTXFopahr347WcnDx90lbe6X2m4r/oCh1NQtEjqUhrntHOKTBafRwaPtlaPe1dLbNizWuwqayzvEswppaE73NrgPmzx7R7p9FxG0x/D66lxQaNduu/7Tr5XVjRDpopKfmLjtC4LRTb7TupbtUwuaWkPJwRyzxwoS7Zw3SQq0G4uiIiwsoiIiLYXR6srL7tTs1HK3fj9pY57cZy1p33D9VhHquoOlrc5aXQlDbow4Nrq0CRwOBusBdg9/HC0v0K7b7VtJfW7ufZKaWXPdwDP/AMq210wR/wCG7F/W5P3FwGNyCbaajpzo0X7zvH4BqtaUbtFK/mfp/Vc1DGV6C8jmvbQvoiqF7aFVYF4YFVYERe2BSIhxVJrVJiasIqsQWY7Kq72HVsVO5+7DXsMBzy3x7zD8cj1WJRhTKcyRvZNCd2WJwkjPc5pyPvAUKupxU074jxC2Ru3HArpWipfaXgNOB5K4U9oqHTZA90cS7d5hTtnzKe7WehutOQIqqFszW+JGSPQ5Hos4ht4EGG8AeYXwGsrHQyFh1HyXSAMABPFcq7QrGbLrWupmsDIakishaOIAfneHo8O+IVjq4sW+o4fzTv2Fbz2+6cLrBR35kG6+3T9VMRzMMhAyfJ+6fVabq4T8nVJA/mX/ALCvsWzeJjEMLbJxAse5UdTFuS5aLoWipt6hpmDG91LOzH4oVV1tldIGx8fTkVkNntTW0tMTkEwMzxz+KFeIqKOMgjge3C+I1NZaRw6yr3pGNGSsVPbmxxNxC0uBByObj/gFz5VW98l0uLyDk19Tkf8AOeupGRNa/O5281o6G1yTVFdM1uQ6vqT/AN567f8AZ5K6SpmJ5D4qtr5N5oWJ27Tr7tdqCzMJaa+obC8jsj+lIfRgPxC35XWoNbGyFm7G0ABgHID/APixbZVZA/VFdcpWgtt8QpYj+dkAc8+jQwfaK2fuDHFQducTdNXiFvssHmdV6oXGJt+aweotTmxkSMY/gfeIwcrUG1qofVXqktYzu0UfXyj84/gwHyaCftLoyvig6p8s+BG1pdI8n6LRxz6Lmq4ufdK2ru8jS01s7pmtP4rDwjb6MDVv2EhNXVmZwyYPMr3W1AMdhqViMkGO9Q5osErIaun3c8FbKmLGV9iVOrLLGO5RJWK6zR81CnZ2rKwVapmcVGkYrjK3iosrVkLCgvat0dFe59XcrzZncpo2VLMN7W+67j5Fq05I1Z70eqw0m0ykjM4iZUwyxFp5POMgeeWrntq6cVGEzN5C/hmplA/cqGlal6SVlZY9rF4pomhsbqh0jQOQDwJAPQPA9FrVdBdNm2+z6/pq4N4VVJE8nxG+w/cxq59VhhFQanD4JjqWNv22sfMFaJ2bkr28iUREVgtSIiIi6f6DEP8AtC9z45UzW583j/Ss16YP+7di/rkn7ixnoLtb7HqB/wCNuQD+3L/kFtLb1ov8MbFQMde6O0RUc5kfNVD3TvDAGcjC+VYvVx021zZZTZrQ3r1jHLrKvaaNz8OLW6m/xXHwVRq2JqzZjQ2DT1VdRryxVr4GZZTwn35Tn6LfePFa9aF9NocRgrml8BuB1EfEBUssL4jZy9tCrxhUo1XjUwrUqzBwVeMKk3kq8XNYRSIhhTIGjgosan0reS8r0ui+ivXvrdO3C0y5xbKkPi/Qmy7Ho5rviFustxwHBaG6JzxFNqUOOARSn+8W+g4F3ML8+bZQxx4tK1uWd/EK3hc50YJUS8Wuju9rqbZcIRNS1URilZnGWnx7PNa6v2yHR9NYrhPH8rB0VLK8Zr3kEhhIytpAq2aoz+Dd0/qU37hVdQYhU0pDIZC0Ei4BWXNB1Cl2tmbZSHhkwM/dCruaRzVC1O/2bS/0LP3QpLjlRZ2skJ7V6F0awkjPesF0zpKirbW6skr7tE6WrqSWxVZawfPv5DHBZ9G3LhhWbQsZ/BtnAn+M1P8AfyK+wyOop4HPpyWk2zC1PIJzUqxWWjs1B7JRCTdMjpHvlkL3yPcclzieZ/yUx7CO1Vw1wOMZXx491eKulMwdJJfe5o11tFhO1erlg0k+hhLhJc5m0W8PxWOyZD+o1w9VqmspA1pAaAByAHJbY2pRmSlsceMk3Mf3MqwW40uARjC+lbDUzIMPJaMyc1FqM3LX9ygxnAVjq4+fBZldKcDIwsfroBg8F211HKxuZnPgoE7D3K91EQGeCts7BkrK8lWeZqhzNV1nYrfO3isrCgShZBssqoqLaJY55mks9sYzgORdlo/arrpLQ9NqO0mudqy0W+QSuY6nn+m3B4E8Rz5rI9O7MKWk1Dbqv8N7HN1NVHIIoz7zy1wOB73MrmcVx2g6Gane43s4ey7lbWynQUku814HLiFYenPF89Y5u+B7fg9v+pctrrPp0tb8laef+NipH9qD/MrkxbNknb2CUx6neT3BeK8WqpO0fAIiIuiURERERdSdBib5++QZ5wMdjyef9SzPpfSSN0xZI2yOax9Y/eaDwdhnDK1h0Ibj1Gtq6gcRioo5AB9YOY4fcHLZvS/H/hux/wBbf+4vm2IRbu2MLj7wB8GEfJXMLv8ATXDkT8brmxvPmVUbxXhoVRi+ndipFUYq7FRaqrFgoq7VXi5qg1V4eYWEUyIK403YoEGFNicGML3HDWjJ8l5JAFyvS3d0aXSRC/zAYie+CME9rmhxI9A5vxW76et3qhsbgeXPsWptlFtks2l6OB7Nyokb7RU8eO+872D5DA9FsSjqPmAd7iScBfANpntq8QlmGl/hkulpYwIg0rJXT7mC52SewKLqJzpNM3Q7ruNFMOX1CsK2jX6W36OmbTSPhrK6VtHTvacObvcXvHcWsDj4HC1tO15s1ZmuuJHs8mAa6Yj6J+spOBbKTYlF6UH7rWnxsolTI2J25xXRdrwbXSAc+oZ+6FJweGQotrB+TqU/mGfuhTmcQucEZklIPNeb2CkxQtDQ7JVr2eDrNMx4H/FVPZ+fkV3onb0gYQVi+jNK2Susjqupp6gyy1lUXFtXMwE9fJ2NcAPRfXdnKGOeEPYLN0KgTOINlmohZg4bhyh1EDmcxzPNW7SrTbbtc9POkldFAW1VGZZC89TJkFuSSTuva4ceQIWQSty08le4ng0FTCQBay1skIK19tHiLaez1DgeqhubOsd+Tvsexp/Wc0eqwa9Hcl3Str6ptzbvZq21yZaKmIta4fiP5td5hwB9FpyqqZK6nhqpWlkxaWzsx9CVp3Xt9HAqBszKxsb6catPxWyW+qsdwZvElY/cIsArJqlvA5VluDcgldUtKxesZzVoqBxKv9c3mrHVDiVlYVrqe1W6btVxqRxVvlHEr0F5UOQHjgq56Fp56nW1khha6R5r4jgdwdk/cFb5Asp2NU81RtNszYd33JXSPyce61hJ/wAFX4vIIqGZ/Jrvgt1ON6Vo6wpnTom9ywwZ5RSux5vZ/pXKy6P6cVwEmq7Zb2nPU0bC7wLnvJ+4N+K5wUHZaMx4NTNP6b+Lifmvdab1Mh6/kAiIivlGREREW1eizdWWva9aHSPDWzTdSc9vWNdGPveF0J0vIpXaWsszY3OjZWOD3AcGks4Z88FcdaUrpbdqCjq4HlkjJAWuHY7OQfjhd2bXqRmstik9fRxiRzqSK4wADJ4APIHjukhcLtOBS4vQ1x0uWHqzy/mPgrOh9eCWLv8AvwXIY5qo1UxzXscl36q1UaVVYVRBVWMrBWFIYpEPNRo1IiWEUyJyyTRVuF51Nb7e9pdC6XrZwP8Ay2e8744A9VizHYW1NiVEY4629uaMvd7LCT+S3i8+riB9lVGN1nolG9/HQd63wM33gLcNGHGo3t3A/GPLOVdIpH5a1o48znkrHbqgHiRwJBOVdHVlLSxy1lU4Cnp4XTSOPINaMn9i+I1EXSOAbqV0UTrBYJtOuxrdW09vafmrZBhwz/PS4LvgwNH2ioEzv9i1n9Wk/dKxqCtnr6ya41R/jFZM6olyeRcc49Bgeivckh+R6zj/AMO/90r7ThtE2hw9kI4DPt4qhml6SQuXTdsaTbaT+gZ+6FIyQo1qf/s2l/oGfuhSiQcL4NIWGRxaeJ+KnBTaAvy3Azx+5Q9nv+7DP61Vf/USKTTyFrwAeAVm0Dco49PCN3NtVVZ/68i+w7JVDDTdGDmFBnabqbqofJ92tF/+iyGb2OqP5mYhoJ8pBGfIlXyoOIyT5Ky36elutpq7ZPwjqYnRF3a3I4OHiDg+ip6XvDrppekqJ8CrDTDUt7poyWP/ALTSfUK+xSpZFTOLjbJamsN1NmLjkYzhaf1rRfJmsK6Dd3YK9or4e7ePuyj9YNd9tbfc4lrQOHH4rBdstG59hp7ywe/a5995HbA/3JB6Za77K4LB65lPXhxJs6w8fopT23ata1mOOFZK4jB4q7VrsZVhuEmAV9NCiK0XAjBVgqTxKu9dJzVjqXe8V6CwoNSoEvDKnT4KgzdqyvKjSclsvo2UZm1pV1fUteymoyOsPNjnuAGPMArWU55rfGwGKGybObpqOqyI5HyTvJI/k4mnl3cnLlts6kxYW9jdXkNHefop+Gs3pwToM1zh0sbq25bXLk2N+8yneIQO7cY1p/tBy1ErzrS4zXXU1dXVD9+WWVznu73Eku+8lWZdHTUwpYI6ce40N8AB8lBc/pHF/Mk+KIiLcsIiIiL6xxY8PacOacgrujov6hg1VsoFqq8Svod6mlYeOYnglufDi5v2Vwst49EPWcen9dC1Vku5SXIeznJ4NcSNx363D7ZXO7VYca/C5GMHrM9dva3X/wAb99lLoZuhqGuOhyPf/VW3XNkfpzV90srmkClqHMjz2s5tP6pCswW/+lfpR/WUer6ZhLcClqwBy5ljvvI+C0ACpezuJDEsPjmvnax7Rr9V4rIOhmLV7bzVaNUWqtGVeKKpDOQVdijs4gKvGQvKKtxA90ZdyaB2k8APiuhNKW9lpsVFbGEH2eINkcO1/Nx9SStM7Orb8qaspWlm9DSj2mX04NH6xB9FvOHELC0cSe9cDtfUb72wDhmVZUTbAuKusAAG6zv4kdix/a1dhS6cjtcb8SXCURvGePVN95/xw0faV4tTpOs97JzwK1ftNuwuetaiNhzDbmCkZ4uB3pD8SB9lc7s/Q+l4g24ybmfkplRLuRHrUajl94ZV6knzaasfmH/ulYxSScQrrJOBbKriP5B/7pX1ib2HdipW6rrm14+TKXHH5hn7oUjJ4Kz2eqd7JSgnh1EfD7IV3Y8O5L8xz3Eru0q7LC0C6kMcQQVrrTVy6qglZnGKyq/v5FsBruQWlbfV9WaxgdgCuqh/3nr6XsBP0k0jRyCg1IsAs3mu4APvr5oS5tZqS62wv9yra2vgHZvDDJQPgx32isLmqySfeKoQXT5Lu9uvOfdoqgGYd8L/AHJPgCHfZXdY7RmqoZGDW1wtDHWcFvTJwCDyUa5QQV1DPRVLN+CojdFI3va4YP3FVN/szkHuXkjJyvhMla8H1DmFPDea5yqRPQma3VbiamhkdTSnvLDgO9W7p9VZLhNkHis625W/5N1VBdImbsF1g3Xns6+Lh8Swj9QrWVbPz4r73gtaK2hjm4kZ9oyKrpG7riFFq5Mk8Vaqh/EqVUyZzxVtndx5q2C1FUJn4UOVyqzO8VDld4rKwvkcU1TVR01OwyTTPbHG1o4lxOAPiVuvbvcabQGw2GwUhbHLUxtpAG8CWgb0rvXkf01jXR90y+76rF6nafZbZ77T2OlIw0egyfgte9MLWLL3rf5FpZN6mtjTBwOQX5zIf1sN+wuNrD+KY/DTDNkA33dvujxt3EqxZ+4pHP4vyHZxWiZHukkdI45c4knzK8oi7JVyIiIiIiIiKTbKp9FXRVLCQWOycHjhRkWQSDcLBFxZfoHoG7UG1PZCIq17ZZZ6c0tbxyWygDD/AF91481yfqC1VdjvlZaK5hZUUkronjvx2jwIwfVXPovbRjo/VzaGvmItddiKfJ4MGfdf9kk/ZLvBb06Tuhxc7SzV9rhDqqkZu1m7zkh7HeJb+w+C+f0xGzmMmnOUE+beQPLu07N0q2d/nKbf99mR6xz++tc2tVWNUWqsxfRFUKu08FWjKjtKrRryilU0ssE7Z6eaWCZv0ZInlrh6hZjYtod/oXt9sMN0iHMTDckx4PbwJ8wVhTCqjSolVQ09ULStBWxkjmaFbptm06w+xTzyCqo6pkTnMglZkSPx7rWubkHJxzwtawSyOJfM/fmeS+R3e4nLj8SVZoHY5FTYZMKHh+D0+Hue6H3l7kndIACr1Ty8R5qfLMTb6hrQSTE4ADyVghlORxVzpZ+HNWTm3BBWsGy6eo9caKbS0x/Cq0hwhYCOvHD3RwU2HaDoxhdjVNqOfz4XMUdS4DmpUNW78pfP5f2e0kjiTK7yVh+IOItZdOw7QtFPAP4UWtpzxzOFp+C4RyT1kkEgfDJW1D43jk5pleQR4ELDoa12RlyuEFaSOJKuMB2WhwV73xPJ3hbNRpZzJqsoFVnmVTnljlifFIN5j2lrh3g8CFY2Vnij6zgeK6ci61XWy9P7V7Da9OW+13Saqqb7BH7O+lhhJc/c4NeXnDQHNAOSe9Wm/wC1HUlY18dvjpbNCeRaOvn/AFj7jT5A+awCeudjG8cd2Vb6isJ7Vy9NsfhkMzpizeJN89PBbTUPIspN5raisqzVV1ZU1tTy66omMjgPDPBvoArNUzZzxXyoqCcqBPNntXTxRMiaGsFgOS0k3zKTSc1EmfwSSTPaqEr8jmti8qPM7xUYNfLKyKNpe97g1rRzJJwAPXgqkrslbW6PejW19cdVV7A6mpXllI08nSjm7xDeQ8c9yq8ZxSPC6R1RJw0HM8At9NA6eQMCymvqItkWxWSWSZhubmHcJx71TIPvDBk+TFwteK2W43Garle57pHE5cck+fitx9KnaN+FWqzardPvWugzFEWnhIc+8/7RGB9Vo71pFQdmcMkoqQy1H5sp3ndXId179pI4LZWziWSzPZbkPmUREXRKIiIiIiIiIiIiIvcEr4Zmyxu3XsOQV2Z0WdqEWp7IzSV5la6upoi2mMhz10QHGM55lo5d7f0SuMFc9MXuu0/eKe52+d8M8L2va5hwQQcgjxCq8ZwmHFqR1NJkdWn9LuB7OB6uuy3U9Q6nkEje8cwugNu+zubSF8dcrdC91krH5ifnPUyHiYz3D8n4di1u0rqjZlrPTu2PQ81pvEML63qgKym5b3YJY+0cceLTw7idEbU9n9z0JeDFLvVFsmcTSVYbgPH5Lu547u3mPCk2dxqVshwvEPVmZkL+8OBB45eIzUqspmlvTw5tPksTYVWYeCjNKrMK7JVqktK9gqg1yqByIpERUljuShRu4qu16wVlTI5MEcVcIJeHNWZsnFSYZuHErCyr2ybHaq8c/irOybxVeOXxWEV7jnxjiq7asD8ZWVsvDgUM5RZur+2tx+Mj63633qxsn8V9dNwRLq6SVn1lGkqMk8Vb3zFUjKc81hLqa+XOfJRJ5OfFeOtPeo80mcr1ZYR8qoySrw5xVx0tYLnqe9RWm1Rb8z/ekkcPchZni957vDmTyWqeeOnjMshs0akr0xpe4NaM1cdnOlKvWGpI6CLejpYsSVc+7kMZnl+keQ9T2LOukdtDoNBaTbozTe5T1csAjeITj2eEjg0dznd/MDJ5kFX3WepbBsS2fx2+jfFUXaVhdG14G9I/tlkx+KDwA7cADtI4o1Xfq/Ud6qLpcZ5JpppC9znniSTxJ/8AXDkuMw+GTaCsGIVAtAw/u2n3j+ojkPjlzVhO8UkZgYfXPtHl1ff0VtqJpKid80py95ySqaIu4JvmVW6IiIsIiIiIiIiIiIiIiIiIr/obVV10jfae62upkhlhfvAt+B4ciCOBB4ELtbZ9rfSu2PSMtoucMIrHxfxmkJ54/nIjz4H1aefYTwUrrpe/3PTl1huNsqZYJoXh7XMdgg94Ko8cwKHFoxc7srfZeNR1HmPMajjeTTVT6d2WbTqOf9VvbajsuvWiqh9VGH19ncSWVbG8YxngJB2Hx5HwWBsPeuiNju3Gxa2oW2LVYpqavlb1RfIAIKnPDDgeDXHu+iezHJQdpWwnq2SXHRbnHGXOt8r/AO7cf2H4qmoNo58Pl9Bxkbr+D/dcOd/n42Kky0bJm9LTG44jiFokOVRrl4q6eoo6mSmq4JYJ4juvjkaWuae4gryHLt2ua9u803CrCLKSxyqtcorHcFVa4rKwq4PiqzHKM1yqNKLKlseq8cuFBDvFeg/xWFlXRs3BfHSZ45UBsh71UD/FYsinMlwvr5h3qAZD3r4ZD3oilulVMy8eai9Yc8031lFKMviqT5eeVRBe5wa0FxJwABk5W1Nnex65XcCt1L11spMgsgGBNKO3P5A+/wAlWYni9LhkfSVD7chxPYFugp5J3WYLrEdC6PvGr7j1Fuh3aaN4bU1T/oQjt83dwH3LbWp9Q6R2H6RdSUm7VXadu+GPd85M7l1khHJg5ADyHaRatqm2HTGze1O07pGCklrogWYiGYad3bnH03+HIHmexcg6t1JddT3ee53WqlqJ5n77nPdkk95/Z3AcAuYgoazaGQVFeDHT6tZoX8i7kPjw5qa+aOkBZCbv4ngOzr++pStf6vu2sr/UXa61L5ZJXZ48AO4AdgA4AdixxEXbta1rQ1osBkANAOQVYiIiyiIiIiIiIiIiIiIiIiIiIiIiIiqU08tPKJYXljx2hb22QdIa96c6m2X/AHrnbW4aBI/5yMfUeewfkuyO4tWhUUasoqeuiMNSwObyPxB1B6wvccj43bzDYrv51Ps12wWwVELoJqsMBLmERVcH6Q5kfFp7FqbXmxDUVk36qxuN5om8d1gxO0fo/jenwXNllvl0s9VHU2+smgkidvMLHlpae8EcQfJb82ddJu8W+NlJqimbdIhgCUu6uUD9IDDvUA+K5D8BxTCDvYTNvs/6b/kdP5e9T/S4KjKobY8x8x/dYTUU9TSzOgqoJYJW8CyRha4eYPFfGFdN2/XmyXaRSx09xfRCZ30YrgwRvBPD3ZM7ufJ2Vb9R7BLHWfP2C6z0BdxDJQJoyPA8D95W6PbJlO8RYlC6F3WCR3dXihw4yDegeHBc8tKqNK2Jd9iWtqAuNNDR3GNoJBgm3XHHZuuxx9VjFx0Xq23ECs07co8t3siAvAHm3Kv6bHcOqReKZp7xfwUN9LMz2mlWXKyek0o6fZzXaudXOZ7PVsgZThgIeDu5JPMHisbZS1buVLUH/lO/yW0LdTVP8Hi6RezS9Z8pRnc3DkjLexRsZrjCyIwvtd7QdNCc17pog4u3hwK1cHqo168vpKxn0qOoH/Kd/krrZ9K6mu278n2K4TteCWuEDmtwPF2ArWWsp4m70jwB1kLQ2N7sgFbC9eS7xWeWfZDrm4Fhlt0VAxxIc6pmaC3HbutyVndm2C0UQ6y9X+aUDJLKaMRtxj8p2SqSr2twml9qXePJufwyUqPD6iTRtu1aIbvOeGtBc48mgZJ8lnmj9lWq7/IySWkNrozgmeqBBIP5LOZ9cLY0+ptj2zKAtpJKWprYm7rjTYqJnfpSE7rT4Fw8lqfaL0nLrXRyUelqVttiOQZt7rJj9ojDfQE+Kr/xTGsUyoYOiYffky7wOPcCtvQ0sH5r948gtx01o2c7JKH5Ru9bHNcSzLXz4fO/HZFGPojxHqVora90ibzf+utmnN62W92Wkxv+dkH1njkPqt9SVpO+X663qqkqbjWzTySnL3PeXFx8STk+qtinYfsxT08vpNU4zTfqdoOxuneb9VlqmrXyN3GDdbyHzKq1VRNUzGWd5e89p7FSRF0pJJuVDAsiIiwiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiq0881O/fhlfGfqnCyrTO0jWGnXD5LvVXTsHNkcrmtPm0HdPqFiCLDwHt3Hi45HMeBS1jcarf1g6UGsqONrLjBRXDsLpqfDviwtH3LNrR0q7c8hty05u97oakj+yWf/cuS0VHUbMYPUZvp2912/ykBSWVtSzR5+PxXZ9P0mdDPDTNaa5hJ47pidgergp38JTZ1u7vst3x3dXT/wD7VxEigO2IwU/7ZH/IraMTqh73kF2hU9JnQrA/qbVXyEH3d4xNzx8HH/FWO7dKq2RAstmm97udLUn91rP8VyWi2x7GYKw3MN+1zvkQsHEao+/5D6Lf9/6UOsayN0dup6K39zooMu+Ly4fctYan2lax1EXfKd6q52H8SSVzmjyafdHoFh6K6pMNo6LOnha08wBfx181Fklkl9txPf8ALRVaionqHb08r5D9Y5wqSIpxJOZXgCyIiLCIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiL/9k=" style="width:42px;height:42px;border-radius:50%;object-fit:cover;" alt="Umpireal">
+      <div class="brand-name"><span>UM</span>PIREAL</div>
+    </div>
+    <div class="pub-tag">PUBLICATION · 01 OF 12</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-number">01</div>
+    <div class="series-label">The Momentum Papers · Series Introduction</div>
+    <h1 class="cover-headline">
+      The <span class="accent">Three</span><br>
+      Pressures<br>
+      Cities Can<br>
+      <span class="accent2">No Longer</span><br>
+      Ignore
+    </h1>
+    <div class="cover-rule"></div>
+    <p class="cover-standfirst">
+      Energy affordability. Housing shortages. Traffic congestion. Three crises treated as separate problems — but driven by the same underlying failure of urban infrastructure design.
+    </p>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-brand">PRESERVING MOMENTUM · POWERING CITIES · ALAN LEDWITH · CEO &amp; FOUNDER</div>
+    <div class="cover-footer-url">UMPIREAL.COM</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 2 — THE CONNECTED CRISES
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-series">THE MOMENTUM PAPERS · 01 OF 12</div>
+    <div class="page-brand"><span>UM</span>PIREAL</div>
+  </div>
+
+  <div class="section-label">The Problem Statement</div>
+  <h2 class="section-title">Three Crises.<br><span class="g">One Root Cause.</span></h2>
+  <div class="sep"></div>
+
+  <p class="body-text">
+    Debates about the cost of living, climate change and urban dysfunction often become politically polarised. Yet regardless of where one stands in any of those debates, <strong>three realities are becoming increasingly difficult to ignore.</strong> Across towns and cities worldwide, daily life is being shaped by three converging pressures — and they are accelerating.
+  </p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Energy Affordability</div>
+      <div class="card-body">Households, businesses and public services face escalating energy costs that feel impossible to control — even when global markets temporarily stabilise.</div>
+    </div>
+    <div class="card cyan">
+      <div class="card-icon">🏗</div>
+      <div class="card-title">Housing Shortages</div>
+      <div class="card-body">Restricted opportunity, reduced mobility and growing inequality flow from the same infrastructure systems that make urban land so expensive to build on.</div>
+    </div>
+    <div class="card red" style="grid-column: 1 / -1;">
+      <div class="card-icon">🚦</div>
+      <div class="card-title">Traffic Congestion</div>
+      <div class="card-body">Time wasted, productivity eroded, and enormous quantities of fuel consumed — <strong style="color:#f1f5f9;">without producing a single unit of economic value.</strong> Stop-go infrastructure is a machine for destroying wealth.</div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"These challenges are often discussed as separate policy problems. In reality, they are deeply connected — reinforced by <span class="g">the same underlying systems.</span>"</p>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-series">UMPIREAL · THE MOMENTUM PAPERS · PUBLICATION 01</div>
+    <div class="page-footer-url">UMPIREAL.COM</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 3 — HOW THEY CONNECT
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-series">THE MOMENTUM PAPERS · 01 OF 12</div>
+    <div class="page-brand"><span>UM</span>PIREAL</div>
+  </div>
+
+  <div class="section-label">The Hidden Connection</div>
+  <h2 class="section-title">Why <span class="g">Stop-Go</span><br>Makes Everything<br>Worse</h2>
+  <div class="sep"></div>
+
+  <p class="body-text">
+    To understand why energy feels increasingly unaffordable, we must look beyond global oil markets and headline fuel prices. And to understand congestion, we must look beyond traffic volumes alone. In both cases, the deeper issue lies in <strong>how energy is taxed, how it is wasted, and how urban infrastructure is designed to destroy it.</strong>
+  </p>
+
+  <div class="connector" style="margin: 28px 0;">
+    <div style="text-align:center; margin-bottom: 20px;">
+      <div class="section-label" style="margin-bottom: 4px;">The Underlying System Failure</div>
+    </div>
+    <div class="connector-items">
+      <div class="connector-node">
+        <div class="connector-node-title">Energy<br>Wasted</div>
+        <div class="connector-node-body">Every stop strips momentum, dissipating paid-for kinetic energy as heat — heating the road, the brakes, and the city</div>
+      </div>
+      <div class="connector-arrow">→</div>
+      <div class="connector-center">
+        <div class="connector-center-text">STOP-GO<br>INFRASTRUCTURE</div>
+      </div>
+      <div class="connector-arrow">→</div>
+      <div class="connector-node">
+        <div class="connector-node-title">Cost<br>Inflated</div>
+        <div class="connector-node-body">Fuel burned, time lost, accidents caused</div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:center; margin: 12px 0;">
+      <div style="width: 2px; height: 24px; background: var(--border);"></div>
+    </div>
+    <div class="connector-items">
+      <div class="connector-node cyan">
+        <div class="connector-node-title">Land Value<br>Suppressed</div>
+        <div class="connector-node-body">Congested locations become undesirable for development</div>
+      </div>
+      <div class="connector-arrow">←</div>
+      <div class="connector-center" style="border-color: var(--cyan); background: rgba(34,211,238,0.06);">
+        <div class="connector-center-text" style="color: var(--cyan);">URBAN<br>DECLINE</div>
+      </div>
+      <div class="connector-arrow">←</div>
+      <div class="connector-node cyan">
+        <div class="connector-node-title">Housing<br>Constrained</div>
+        <div class="connector-node-body">Development economics collapse near conflict points</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body-text">
+    This is where <em>the real cost begins to emerge</em>. Not in the oil field, not in the refinery, not even at the pump — but in the repeated, deliberate stripping of momentum that cities embed into their own road networks, junction by junction, crossing by crossing.
+  </p>
+
+  <div class="highlight-box">
+    <p>The real question is not how efficiently we can recover energy after it has been destroyed. It is <span class="g">why we choose to destroy it so often in the first place.</span></p>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-series">UMPIREAL · THE MOMENTUM PAPERS · PUBLICATION 01</div>
+    <div class="page-footer-url">UMPIREAL.COM</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 4 — THE SCALE + CLOSE
+═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-series">THE MOMENTUM PAPERS · 01 OF 12</div>
+    <div class="page-brand"><span>UM</span>PIREAL</div>
+  </div>
+
+  <div class="section-label">The Scale of the Problem</div>
+  <h2 class="section-title">Numbers That<br><span class="g">Cannot Be Ignored</span></h2>
+  <div class="sep"></div>
+
+  <p class="body-text">These three pressures are not abstract concerns. They translate into hard, measurable losses that compound across every economy, every city, every day.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-value">€3T+</div>
+      <div class="stat-label">Annual cost of congestion<br>in fuel and time alone</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value">5,000</div>
+      <div class="stat-label">TWh of energy wasted<br>annually from stop-start</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value">75bn</div>
+      <div class="stat-label">Hours of human time<br>destroyed every year</div>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-value" style="color: var(--cyan);">1 Gt</div>
+      <div class="stat-label">Avoidable CO₂ from<br>stop-start alone</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" style="color: var(--cyan);">€6T</div>
+      <div class="stat-label">Conservative total system<br>cost of stop-go infrastructure</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" style="color: var(--cyan);">40–50%</div>
+      <div class="stat-label">Of all road injuries occur<br>at junctions</div>
+    </div>
+  </div>
+
+  <div class="sep full" style="margin: 28px 0;"></div>
+
+  <div class="section-label">About This Series</div>
+  <h3 class="section-title" style="font-size: 32px;">The <span class="g">Momentum</span> Papers</h3>
+  <p class="body-text">This is Publication 01 of 12 in a series examining urban infrastructure failure — and the physical, financial and civic case for a fundamentally different approach. Each publication isolates one dimension of the problem or the solution. Together, they form a complete case for why <strong>momentum-preserving infrastructure</strong> is the next great challenge in urban design.</p>
+  <p class="body-text">Subsequent publications examine the hidden energy taxes at the pump, the physics of stop-start driving, why EVs don't solve this, the insurance cascade triggered by junction accidents, and the Umpireal solution itself.</p>
+
+  <div style="background: var(--card2); border: 1px solid rgba(240,180,41,0.2); padding: 28px; margin-top: 20px; border-radius: 2px;">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); margin-bottom: 12px;">CONTACT</div>
+    <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 4px;">Alan Ledwith · CEO &amp; Founder</div>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gold);">alanledwith@umpireal.com &nbsp;·&nbsp; +353 85 759 1669 &nbsp;·&nbsp; Navan, Ireland</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-series">UMPIREAL · THE MOMENTUM PAPERS · PUBLICATION 01 OF 12</div>
+    <div class="page-footer-url">UMPIREAL.COM</div>
+  </div>
+</div>
+
+</body>
+</html>
